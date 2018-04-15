@@ -5,6 +5,18 @@
  */
 package IHM;
 
+
+import DAO.UtilisateurDAO;
+
+import Metier.Utilisateur;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author coolye
@@ -14,10 +26,20 @@ public class ListeSalarieVal extends javax.swing.JFrame {
     /**
      * Creates new form listeSalarie
      */
-    
-    
-    public ListeSalarieVal() {
+
+    public ListeSalarieVal() throws SQLException {
         initComponents();
+        UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+        ArrayList<Utilisateur> listUtilisateur = utilisateurDAO.listUtilisateur();
+        
+        JTable jTable_Utilisateur = tabSalarieAttente;
+        DefaultTableModel dm = (DefaultTableModel) jTable_Utilisateur.getModel();
+        for(Utilisateur listUtilisateur1 : listUtilisateur){
+            Utilisateur oneUtilisateur = utilisateurDAO.readOneUtilisateur(listUtilisateur1.getId_Utilisateur());
+            String a[] = {oneUtilisateur.getNom_Utilisateur(), oneUtilisateur.getPrenom_Utilisateur(), oneUtilisateur.getMail_Utilisateur()};
+            dm.addRow(a);
+            
+        }
     }
 
     /**
@@ -32,29 +54,35 @@ public class ListeSalarieVal extends javax.swing.JFrame {
         labelTitre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabSalarieAttente = new javax.swing.JTable();
-        labelStatut = new javax.swing.JLabel();
         butRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         labelTitre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        labelTitre.setText("Liste des salaries");
+        labelTitre.setText("Liste de tout les salaries");
 
         tabSalarieAttente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nom", "Prenom", "email"
             }
-        ));
-        jScrollPane1.setViewportView(tabSalarieAttente);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        labelStatut.setText("validation en attente");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabSalarieAttente.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tabSalarieAttenteComponentShown(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabSalarieAttente);
 
         butRetour.setText("Retour");
         butRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -73,12 +101,9 @@ public class ListeSalarieVal extends javax.swing.JFrame {
                         .addGap(299, 299, 299)
                         .addComponent(labelTitre))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(butRetour)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelStatut)
-                                .addGap(633, 633, 633))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -87,9 +112,7 @@ public class ListeSalarieVal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(labelTitre)
-                .addGap(18, 18, 18)
-                .addComponent(labelStatut)
-                .addGap(30, 30, 30)
+                .addGap(66, 66, 66)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(butRetour)
@@ -105,6 +128,10 @@ public class ListeSalarieVal extends javax.swing.JFrame {
         ListeSalarieVal.this.setVisible(false);
         uneFenetre.setLocationRelativeTo(null);
     }//GEN-LAST:event_butRetourActionPerformed
+
+    private void tabSalarieAttenteComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tabSalarieAttenteComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabSalarieAttenteComponentShown
 
     /**
      * @param args the command line arguments
@@ -137,7 +164,12 @@ public class ListeSalarieVal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListeSalarieVal().setVisible(true);
+                try {
+                    new ListeSalarieVal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ListeSalarieVal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
     }
@@ -145,7 +177,6 @@ public class ListeSalarieVal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butRetour;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelStatut;
     private javax.swing.JLabel labelTitre;
     private javax.swing.JTable tabSalarieAttente;
     // End of variables declaration//GEN-END:variables

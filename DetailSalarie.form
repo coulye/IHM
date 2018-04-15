@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="329" max="-2" attributes="0"/>
-              <Component id="labTitreDetail" min="-2" max="-2" attributes="0"/>
+              <Component id="titreVue" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -38,33 +38,44 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="titreHistorique" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="LabMail" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labMail" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labNom" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="textNom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textMail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textPrenom" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="LabNote" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labAdresse" min="-2" max="-2" attributes="0"/>
+                          <Component id="labCp" min="-2" max="-2" attributes="0"/>
+                          <Component id="labVille" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labTel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textAdresse" min="-2" max="-2" attributes="0"/>
+                          <Component id="textCp" min="-2" max="-2" attributes="0"/>
+                          <Component id="textVille" min="-2" max="-2" attributes="0"/>
+                          <Component id="textTel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -75,30 +86,45 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="labTitreDetail" min="-2" max="-2" attributes="0"/>
+              <Component id="titreVue" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="labNom" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LabPrenom" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LabMail" min="-2" max="-2" attributes="0"/>
+                      <Component id="labMail" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labCp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textCp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="textMail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labVille" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="textVille" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LabNote" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textTel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Component id="titreHistorique" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="202" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -109,7 +135,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labTitreDetail">
+    <Component class="javax.swing.JLabel" name="titreVue">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -122,14 +148,9 @@
         <Property name="text" type="java.lang.String" value="Nom :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LabPrenom">
+    <Component class="javax.swing.JLabel" name="labPrenom">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prenom :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabNote">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Note &#xe0; valider :"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -142,7 +163,7 @@
         <Component class="javax.swing.JTable" name="TabDetailSalarie">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Client" type="java.lang.Object"/>
                 <Column editable="true" title="Date" type="java.lang.Object"/>
                 <Column editable="true" title="Montant" type="java.lang.Object"/>
@@ -188,34 +209,69 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButRetourActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="titreHistorique">
       <Properties>
         <Property name="text" type="java.lang.String" value="Historique des notes de frais"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LabMail">
+    <Component class="javax.swing.JLabel" name="labMail">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="textNom">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabelNomSalarie"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="textPrenom">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabelPrenomSalarie"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="textMail">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabelMailSalarie"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="labAdresse">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabelNote"/>
+        <Property name="text" type="java.lang.String" value="Adresse :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labCp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code Postal :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labVille">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ville :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labTel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telephone :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textAdresse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LabelAdresse"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textCp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LabelCp"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textVille">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LabelVille"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textTel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LabelTel"/>
       </Properties>
     </Component>
   </SubComponents>

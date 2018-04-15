@@ -5,6 +5,10 @@
  */
 package IHM;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author coolye
@@ -30,7 +34,8 @@ public class MenuSalarie extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         ButSalNoteAtt = new javax.swing.JButton();
         butListedessalarie = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LabTitre = new javax.swing.JLabel();
+        ButRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +48,7 @@ public class MenuSalarie extends javax.swing.JFrame {
             }
         });
 
-        butListedessalarie.setText("Liste des salaries");
+        butListedessalarie.setText("Salarie - tous les salarie");
         butListedessalarie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         butListedessalarie.setMaximumSize(new java.awt.Dimension(115, 25));
         butListedessalarie.setMinimumSize(new java.awt.Dimension(115, 25));
@@ -53,8 +58,8 @@ public class MenuSalarie extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Gestion des Salariés");
+        LabTitre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LabTitre.setText("Gestion des Salariés");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,20 +74,27 @@ public class MenuSalarie extends javax.swing.JFrame {
                         .addComponent(butListedessalarie, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(jLabel1)))
+                        .addComponent(LabTitre)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(LabTitre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButSalNoteAtt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(butListedessalarie, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        ButRetour.setText("Retour");
+        ButRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButRetourActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,31 +104,54 @@ public class MenuSalarie extends javax.swing.JFrame {
                 .addGap(142, 142, 142)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButRetour)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(ButRetour)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButSalNoteAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSalNoteAttActionPerformed
-        ListeSalarieAtt uneFenetre = new ListeSalarieAtt();
+        ListeSalarieAtt uneFenetre = null;
+        try {
+            uneFenetre = new ListeSalarieAtt();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuSalarie.class.getName()).log(Level.SEVERE, null, ex);
+        }
         uneFenetre.setVisible(true);
         MenuSalarie.this.setVisible(false);
         uneFenetre.setLocationRelativeTo(null);
     }//GEN-LAST:event_ButSalNoteAttActionPerformed
 
     private void butListedessalarieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butListedessalarieActionPerformed
-        ListeSalarieVal uneFenetre = new ListeSalarieVal();
+        ListeSalarieVal uneFenetre = null;
+        try {
+            uneFenetre = new ListeSalarieVal();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuSalarie.class.getName()).log(Level.SEVERE, null, ex);
+        }
         uneFenetre.setVisible(true);
         MenuSalarie.this.setVisible(false);
         uneFenetre.setLocationRelativeTo(null);
     }//GEN-LAST:event_butListedessalarieActionPerformed
+
+    private void ButRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButRetourActionPerformed
+        Menu uneFenetre = new Menu();
+        uneFenetre.setVisible(true);
+        MenuSalarie.this.setVisible(false);
+        uneFenetre.setLocationRelativeTo(null);
+    }//GEN-LAST:event_ButRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,9 +189,10 @@ public class MenuSalarie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButRetour;
     private javax.swing.JButton ButSalNoteAtt;
+    private javax.swing.JLabel LabTitre;
     private javax.swing.JButton butListedessalarie;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

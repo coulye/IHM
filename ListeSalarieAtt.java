@@ -5,6 +5,17 @@
  */
 package IHM;
 
+import DAO.NoteFraisDAO;
+import DAO.UtilisateurDAO;
+import Metier.NoteFrais;
+import Metier.Utilisateur;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author coolye
@@ -14,8 +25,33 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
     /**
      * Creates new form ListeSalarieAtt
      */
-    public ListeSalarieAtt() {
+    public ListeSalarieAtt() throws SQLException {
         initComponents();
+        UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+        ArrayList<Utilisateur> listUtilisateur = utilisateurDAO.listUtilisateur();
+        
+        JTable jTable_Utilisateur = tabSalarieAttente;
+        DefaultTableModel dm = (DefaultTableModel) jTable_Utilisateur.getModel();
+        for(Utilisateur listUtilisateur1 : listUtilisateur){
+            
+            Utilisateur oneUtilisateur = utilisateurDAO.readOneUtilisateur(listUtilisateur1.getId_Utilisateur());
+            
+            NoteFraisDAO notefraisDAO = new NoteFraisDAO();
+            ArrayList<NoteFrais> listeNotefrais = notefraisDAO.listNoteFraisById(oneUtilisateur.getId_Utilisateur());
+            
+            String statut;
+            if (listeNotefrais.size() == 0){
+                statut = "pas de note a valider";
+            } else {
+                statut = "Reste "+listeNotefrais.size()+" dépense(s) à valider";
+                String a[] = {oneUtilisateur.getNom_Utilisateur(), oneUtilisateur.getPrenom_Utilisateur(), oneUtilisateur.getMail_Utilisateur(), statut};
+                dm.addRow(a);
+            }
+            
+            
+            
+    }
+        
     }
 
     /**
@@ -38,19 +74,29 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
         labelTitre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labelTitre.setText("Liste des salaries");
 
-        labelStatut.setText("validation en attente");
+        labelStatut.setText("Salarié ayant notes a valide");
 
         tabSalarieAttente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nom", "Prenom", "email"
+                "Nom", "Prenom", "email", "nbr note "
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabSalarieAttente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabSalarieAttenteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabSalarieAttente);
 
         butRetour.setText("Retour");
@@ -82,9 +128,9 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(labelTitre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(24, 24, 24)
                 .addComponent(labelStatut)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(butRetour)
@@ -100,6 +146,10 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
         ListeSalarieAtt.this.setVisible(false);
         uneFenetre.setLocationRelativeTo(null);
     }//GEN-LAST:event_butRetourActionPerformed
+
+    private void tabSalarieAttenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSalarieAttenteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabSalarieAttenteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,7 +181,11 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListeSalarieAtt().setVisible(true);
+                try {
+                    new ListeSalarieAtt().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ListeSalarieAtt.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
