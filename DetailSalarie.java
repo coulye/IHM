@@ -31,10 +31,12 @@ public class DetailSalarie extends javax.swing.JFrame {
     /**
      * Creates new form DetailSalarie
      */
-    public DetailSalarie() throws SQLException {
+    public DetailSalarie(int id_Jtable) throws SQLException {
         initComponents();
+
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-        Utilisateur oneUtilisateur = utilisateurDAO.readOneUtilisateur(1);
+        Utilisateur oneUtilisateur = utilisateurDAO.readOneUtilisateur(id_Jtable);
+        
         textNom.setText(oneUtilisateur.getNom_Utilisateur());
         textPrenom.setText(oneUtilisateur.getPrenom_Utilisateur());
         textMail.setText(oneUtilisateur.getMail_Utilisateur());
@@ -248,7 +250,10 @@ public class DetailSalarie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButRetourActionPerformed
-        // TODO add your handling code here:
+                MenuSalarie uneFenetre = new MenuSalarie();
+        uneFenetre.setVisible(true);
+        DetailSalarie.this.setVisible(false);
+        uneFenetre.setLocationRelativeTo(null);
     }//GEN-LAST:event_ButRetourActionPerformed
 
     /**
@@ -281,11 +286,7 @@ public class DetailSalarie extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new DetailSalarie().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DetailSalarie.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
             }
         });
     }

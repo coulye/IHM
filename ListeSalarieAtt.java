@@ -44,13 +44,10 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
                 statut = "pas de note a valider";
             } else {
                 statut = "Reste "+listeNotefrais.size()+" dépense(s) à valider";
-                String a[] = {oneUtilisateur.getNom_Utilisateur(), oneUtilisateur.getPrenom_Utilisateur(), oneUtilisateur.getMail_Utilisateur(), statut};
+                String a[] = {Integer.toString(oneUtilisateur.getId_Utilisateur()), oneUtilisateur.getNom_Utilisateur(), oneUtilisateur.getPrenom_Utilisateur(), oneUtilisateur.getMail_Utilisateur(), statut};
                 dm.addRow(a);
             }
-            
-            
-            
-    }
+        }
         
     }
 
@@ -81,11 +78,11 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nom", "Prenom", "email", "nbr note "
+                "id", "Nom", "Prenom", "email", "nbr note "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -148,7 +145,25 @@ public class ListeSalarieAtt extends javax.swing.JFrame {
     }//GEN-LAST:event_butRetourActionPerformed
 
     private void tabSalarieAttenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSalarieAttenteMouseClicked
-        // TODO add your handling code here:
+
+    //on récupérele numero de la ligne cliqué
+        int ligneSelectionne = tabSalarieAttente.getSelectedRow();
+    //on récupère la valeur de la  colonne souhaité de la ligne sélectionné (mettre id dans la dernière colonne chez moi 5 et lui mettre 0 en largeur min et max pour la rendre invisible)
+        String Id_Jtable1=(String) tabSalarieAttente.getValueAt(ligneSelectionne,0);
+    //convertir en string en int
+        int id_Jtable= Integer.parseInt(Id_Jtable1);
+    //vérifier si réception dans le log
+        System.out.println(id_Jtable);
+    //ouvrir la fenêtre visé avec l'id en ref
+        DetailSalarie uneFenetre = null;
+        try {
+            uneFenetre = new DetailSalarie(id_Jtable);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListeSalarieAtt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        uneFenetre.setVisible(true);
+        ListeSalarieAtt.this.setVisible(false);
+
     }//GEN-LAST:event_tabSalarieAttenteMouseClicked
 
     /**
